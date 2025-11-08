@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    margin: 0;
+    /* adicionando o gif como fundo */
+    background: url('../assets/spider-man.gif') no-repeat center center fixed;
+    /* cobrir toda a tela */
+    background-size: cover;
+    min-height: 100vh;
+    padding: 0;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* esconder barra horizontal */
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    /* FIXO, não absoluto */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* ajuste a opacidade aqui */
+    z-index: -1;
+}
+
+#logo img {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    z-index: 99;
+    top: 110px;
+    left: 20px;
+    display: block;
+}
+
+.spider-hover {
+    display: inline-block;
+    transform-origin: top center;
+    animation: swingSpider 2s infinite;
+}
+
+@keyframes swing {
+    20% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(5deg);
+    }
+
+    80% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.spider-hover:hover {
+    animation: swing 2.0s infinite;
+}
+
+
+.cabecalho {
+    background: #000;
+    padding: 40px;
+    background-image: url(../assets/web.avif);
+}
+
+.cabecalho-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecalho-menu {
+    /* sem bolinhas */
+    list-style: none;
+    /* um do lado do outro */
+    display: flex;
+}
+
+.cabecalho-menu li {
+    margin-left: 40px;
+}
+
+.cabecalho-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.navegar:hover {
+    transition: ease-out 0.5s;
+    transform: scale(130%);
+}
+
+.navegar {
+    transition: ease 0.5s;
+    transform: 100%;
+}
+
+.banner {
+    background-image: url(../assets/slide1.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    transition: background-image 1s ease-in-out;
+    margin-top: 10px;
+}
+
+.banner-overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* dois pontos são pseudo elementos, executa uma ação antes */
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ff0000;
+    border-top: 2px solid #ff0000;
+    border-left: 2px solid #ff0000;
+    border-right: 2px solid #ff0000;
+    padding-bottom: 0px;
+    /* garante que outras coisas fiquem acima de tal item, quanto maior o número, vai ficando acima */
+}
+
+.banner-conteudo {
+    width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.banner-titulo {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.banner-descricao {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.banner-btn {
+    transition: ease 0.5s;
+    background: #e50914;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.banner-btn:hover {
+    box-shadow: 5px 5px 5px black;
+    transition: ease 0.5s;
+    /* transform: translateX(5px); */
+    /* transform:rotate(360deg); */
+    transform: scale(150%);
+    background: #fff;
+    color: #e50914;
+}
+
+.sessao-filmes {
+    padding: 20px;
+}
+
+.filme-titulo {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.carrossel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carrossel img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.carrossel-lista {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carrossel-item {
+    min-width: 200px;
+    padding: 10px;
+}
+
+.btn-carrossel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.frase {
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+    font-size: 70px;
+}
+
+.parag {
+    justify-content: flex-start;
+    text-align: center;
+    margin: 100px;
+    font-size: 20px;
+    border-bottom: 2px solid #ff0000;
+    border-top: 2px solid #ff0000;
+    border-left: 2px solid #ff0000;
+    border-right: 2px solid #ff0000;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10%;
+
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.FANTASIA {
+    margin-bottom: 30px;
+    font-size: 40px;
+
+}
+
+h3 {
+    color: rgb(255, 255, 255);
+}
+
+.desc {
+    color: rgb(255, 255, 255);
+    padding: 10px;
+}
+
+.card {
+    transition: ease-in-out 0.2s;
+    width: 300px;
+    height: 500px;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #1f2937;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 30px;
+    border: 2px solid #ff0000;
+}
+
+.card:hover {
+    transition: ease-in-out 0.2s;
+    transform: scale(105%)
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.preco {
+    font-weight: 700;
+    margin-top: 30px;
+    color: #fdfdfd;
+    text-align: center;
+    font-size: 1.7em;
+
+}
+
+.btncomprar {
+    transition: ease-in-out 0.3s;
+    background: #e50914;
+    padding: 10px 40px;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    margin: 10px 10px;
+    cursor: pointer;
+}
+
+.btncomprar:hover {
+    transition: ease-in-out 0.3s;
+    transform: scale(110%);
+    background: #fff;
+    color: #e50914;
+}
+
+#wolverine img {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    z-index: 9999;
+    top: 550px;
+    left: 1600px;
+    display: block;
+}
+
+#hulk img {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    z-index: 9999;
+    top: 2620px;
+    left: 1500px;
+    display: block;
+}
+
+footer {
+    background: black;
+    padding: 20px;
+    text-align: center;
+}
+
+#perfil {
+    width: 100%;
+    min-height: 555px;
+    /* Usado min-height para flexibilidade*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222222;
+    padding: 20px 0;
+    /* Adicionado para dar um respiro*/
+}
+
+.perfis-container {
+    width: 90%;
+    max-width: 900px;
+    /* Definido um máximo para evitar quebra em telas muito grandes */
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center;
+    gap: 20px;
+}
+
+.perfil-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.perfil-card h3 {
+    color: #fff;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.perfil-img {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    object-fit: cover;
+    /* Recorta a imagem para preencher o contêiner sem distorcê-la */
+}
+
+.perfil-img-link {
+    display: block;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+/* ## seções de conteúdo */
+#titulo {
+    background: #1A1D1F;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+}
+
+#titulo img {
+    width: 400px;
+    height: 300px;
+    margin-top: -45px;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 50px;
+    color: #fff;
+
+}
+
+@media (max-width: 768px) {
+    #logo img {
+        width: 8rem;
+        height: 8rem;
+        top: 150px;
+    }
+
+    .cabecalho-nav{
+        justify-content:right;
+    }
+
+    .menu-btn {
+        display: block;
+        z-index: 999;
+        justify-self: left;
+    }
+
+    .cabecalho-menu {
+        display: none;
+        flex-direction: column;
+        background:rgb(0,0,0,0.5);
+        position: absolute;
+        top: 15%;
+        left: 10000000000px;
+        width: 100%;
+        text-align: center;
+        gap: 20px;
+        z-index:100;
+        max-height: 0;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    .cabecalho-menu.show{
+        display:flex;
+        transition: left ease-in-out 0.5s;
+        left:0;
+        max-height:fit-content;
+    }
+}
